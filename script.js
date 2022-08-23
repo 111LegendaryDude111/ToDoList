@@ -2,9 +2,11 @@ window.onload = function(){
 
 
    let toDoList = [];
-   if( localStorage.getItem('todo') != undefined){
+   // if( localStorage.getItem('todo') != undefined &&  localStorage.getItem('todo'))
+   if( localStorage.getItem('todo') != undefined ){
       toDoList = JSON.parse(localStorage.getItem('todo'));
       out();
+      console.log(typeof localStorage.getItem('todo'));
    }
 
 
@@ -19,7 +21,7 @@ window.onload = function(){
       console.log(toDoList);
       out();
       localStorage.setItem('todo', JSON.stringify(toDoList));
-   }
+   };
 
    function out() {
       let out = '';
@@ -35,3 +37,8 @@ window.onload = function(){
    }
 };
 
+document.getElementById('clear').onclick = function(){
+   // localStorage.setItem('todo', "");
+   localStorage.removeItem('todo');
+   location.reload();
+};
